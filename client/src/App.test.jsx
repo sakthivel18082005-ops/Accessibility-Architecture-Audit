@@ -1,7 +1,20 @@
 
 import { render, screen, waitFor } from '@testing-library/react'
 import { vi, describe, test, expect, beforeEach } from 'vitest'
-import App from './App'
+import { MemoryRouter, Routes, Route } from 'react-router-dom'
+import DashboardLayout from './components/DashboardLayout'
+import Services from './pages/Services'
+function renderServicesPage() {
+  return render(
+    <MemoryRouter initialEntries={['/services']}>
+      <Routes>
+        <Route element={<DashboardLayout />}>
+          <Route path="/services" element={<Services />} />
+        </Route>
+      </Routes>
+    </MemoryRouter>
+  )
+}
 
 describe('Accessible Service Directory', () => {
   beforeEach(() => {
@@ -43,7 +56,7 @@ describe('Accessible Service Directory', () => {
   })
 
   test('displays all four services', async () => {
-    render(<App />)
+    renderServicesPage()
 
     expect(await screen.findByText('Government Services')).toBeInTheDocument()
     expect(screen.getByText('Education Services')).toBeInTheDocument()
@@ -52,7 +65,7 @@ describe('Accessible Service Directory', () => {
   })
 
   test('filters services using the search box', async () => {
-    render(<App />)
+   renderServicesPage()
 
     const searchInput = screen.getByLabelText('Search for a service')
 

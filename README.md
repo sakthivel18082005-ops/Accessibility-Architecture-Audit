@@ -67,16 +67,32 @@ The tested elements were reachable during the initial navigation check. Further 
 ## Project Structure
 
 ```text
+
 Accessibility-Architecture-Audit/
 │
 ├── client/
 │   ├── public/
 │   ├── src/
+│   │   ├── components/
+│   │   │   ├── Header.jsx
+│   │   │   ├── Sidebar.jsx
+│   │   │   ├── Footer.jsx
+│   │   │   └── DashboardLayout.jsx
+│   │   │
+│   │   ├── pages/
+│   │   │   ├── Dashboard.jsx
+│   │   │   ├── Services.jsx
+│   │   │   ├── Users.jsx
+│   │   │   ├── Reports.jsx
+│   │   │   └── Settings.jsx
+│   │   │
+│   │   ├── styles/
 │   │   ├── test/
-│   │   │   └── setup.js
 │   │   ├── App.jsx
 │   │   ├── App.css
-│   │   └── App.test.jsx
+│   │   ├── index.css
+│   │   └── main.jsx
+│   │
 │   ├── package.json
 │   └── vite.config.js
 │
@@ -85,17 +101,17 @@ Accessibility-Architecture-Audit/
 │   │   └── server.js
 │   ├── tests/
 │   │   └── services.test.js
-│   ├── package.json
-│   └── package-lock.json
+│   └── package.json
 │
 ├── docs/
 │   ├── screenshots/
-│   └── accessibility-audit.md
+│   ├── accessibility-audit.md
+│   └── lighthouse-accessibility-report.html
 │
 ├── tests/
-│
 ├── README.md
 └── .gitignore
+
 ```
 
 ## Architecture Overview
@@ -179,3 +195,81 @@ Open a terminal:
 
 ```bash
 cd
+
+
+---
+
+## Task 03: Semantic HTML5 & Accessible Component Architecture
+
+### Project Overview
+
+This task extends the Accessible Service Directory by implementing semantic HTML5 elements, reusable React components, accessible navigation, and a structured dashboard layout.
+
+### React Component Architecture
+
+The frontend is organized into reusable components and individual pages.
+
+**Components:**
+- Header.jsx – Application header and main navigation.
+- Sidebar.jsx – Dashboard sidebar navigation.
+- Footer.jsx – Application footer.
+- DashboardLayout.jsx – Common layout shared across pages.
+
+**Pages:**
+- Dashboard.jsx – Main dashboard.
+- Services.jsx – Displays and searches public services.
+- Users.jsx – User management section.
+- Reports.jsx – Project reports section.
+- Settings.jsx – Application settings section.
+
+### Semantic HTML5 Implementation
+
+The application uses semantic HTML elements:
+
+- `<header>` – Application header.
+- `<nav>` – Main and sidebar navigation.
+- `<main>` – Main page content.
+- `<aside>` – Sidebar content.
+- `<section>` – Groups related content.
+- `<article>` – Individual service information.
+- `<footer>` – Application footer.
+
+### Accessibility Features
+
+- Accessible navigation labels using ARIA attributes.
+- Proper heading hierarchy.
+- Search input with an associated label.
+- Visible keyboard focus indicators.
+- Keyboard-accessible navigation and search.
+- Live announcements for search results.
+- Error announcements using `role="alert"`.
+- Responsive dashboard layout.
+
+### Lighthouse Accessibility Audit
+
+**Audited Application:** Accessible Service Directory
+
+**Lighthouse Accessibility Score:** 100/100
+
+The application achieved a perfect accessibility score in the Lighthouse automated accessibility audit.
+
+The generated Lighthouse report is saved at:
+
+`docs/lighthouse-accessibility-report.html`
+
+Note: Automated Lighthouse testing covers only a subset of accessibility requirements. Manual testing is also important.
+
+### Testing and Verification
+
+The following checks were performed:
+
+1. Verified navigation using the keyboard.
+2. Tested keyboard access to the service search field.
+3. Verified semantic HTML elements using Chrome Developer Tools.
+4. Checked the accessible name of the search field using the Accessibility Tree.
+5. Verified the footer and sidebar semantic structure.
+6. Ran the Lighthouse accessibility audit.
+
+### Task 03 Outcome
+
+Successfully implemented a structured, responsive, and accessible React dashboard with reusable components, semantic HTML5 elements, keyboard support, and a Lighthouse Accessibility score of 100/100.
